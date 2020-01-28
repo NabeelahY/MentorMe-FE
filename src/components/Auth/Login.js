@@ -19,6 +19,7 @@ const Login = props => {
 
   return (
     <LoginStyles>
+      <h1>Login</h1>
       <Form name='login' onSubmit={handleSubmit}>
         <Form.Item>
           {getFieldDecorator('email', {
