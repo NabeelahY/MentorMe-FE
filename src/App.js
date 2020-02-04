@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import { GlobalStyle } from './styles/GlobalStyle';
 import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <Router>
       <GlobalStyle />
       <Switch>
-        <Route exact path='/' component={Login}/>
+        <Route exact path='/login' component={Login}/>
+        <Route exact path='/register' component={Signup}/>
       </Switch>
     </Router>
   );
