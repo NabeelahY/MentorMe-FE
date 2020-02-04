@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { apiURL } from '../config';
 import { axiosWithAuth } from '../utils/axiosInstance';
 
