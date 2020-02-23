@@ -1,17 +1,19 @@
 import {
   FETCH_QUESTIONS_LOADING,
   FETCH_QUESTIONS_SUCCESS,
+  FETCH_TAGS_SUCCESS,
   FETCH_QUESTIONS_FAILURE
 } from '../actions/questions';
 
 const initialState = {
   questions: [],
+  tags: [],
   error: '',
   loading: false
 };
 
 export const questionsReducer = (state = initialState, action) => {
-  switch (action.types) {
+  switch (action.type) {
     case FETCH_QUESTIONS_LOADING:
       return {
         ...state,
@@ -21,6 +23,12 @@ export const questionsReducer = (state = initialState, action) => {
       return {
         ...state,
         questions: action.payload,
+        loading: false
+      };
+    case FETCH_TAGS_SUCCESS:
+      return {
+        ...state,
+        tags: action.payload,
         loading: false
       };
     case FETCH_QUESTIONS_FAILURE:
