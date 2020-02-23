@@ -4,6 +4,7 @@ import { setToken } from '../utils/localStorage';
 
 export const AUTH_LOADING = 'AUTH_LOADING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
 
 export const logIn = user => dispatch => {
@@ -13,6 +14,19 @@ export const logIn = user => dispatch => {
     .then(res => {
       setToken(res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
+    })
+    .catch(err => {
+      dispatch({ type: AUTH_FAILURE, payload: err.response?.data.message });
+    });
+};
+
+export const signUp = user => dispatch => {
+  dispatch({ type: AUTH_LOADING });
+  return axios
+    .post(`${apiURL}/api/auth/register`, user)
+    .then(res => {
+      setToken(res.data.token);
+      dispatch({ type: SIGNUP_SUCCESS, payload: res.data.user });
     })
     .catch(err => {
       dispatch({ type: AUTH_FAILURE, payload: err.response?.data.message });

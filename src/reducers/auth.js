@@ -1,4 +1,4 @@
-import { AUTH_FAILURE, AUTH_LOADING, LOGIN_SUCCESS } from '../actions/auth';
+import { AUTH_FAILURE, AUTH_LOADING, LOGIN_SUCCESS, SIGNUP_SUCCESS } from '../actions/auth';
 
 const initialState = {
   user: null,
@@ -21,6 +21,15 @@ const authReducer = (state = initialState, action) => {
         loading: false
       };
     case LOGIN_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        loading: false,
+        user: {
+          ...action.payload
+        }
+      };
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         error: '',
