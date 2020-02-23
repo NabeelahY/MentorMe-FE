@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 
 export const QuestionContainer = styled.div`
-  .ant-tabs-tab {
-    font-size: 1.5rem;
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+ 
+  .question-card {
+    margin: 10px
   }
 `;
