@@ -4,7 +4,9 @@ import {
   FETCH_TAGS_SUCCESS,
   POST_QUESTIONS_SUCCESS,
   FETCH_QUESTIONS_FAILURE,
-  POST_QUESTIONS_FAILURE
+  POST_QUESTIONS_FAILURE,
+  DELETE_QUESTION_SUCCESS,
+  DELETE_QUESTIONS_FAILURE
 } from '../actions/questions';
 
 const initialState = {
@@ -39,6 +41,12 @@ export const questionsReducer = (state = initialState, action) => {
         questions: [action.payload, ...state.questions],
         loading: false
       };
+    case DELETE_QUESTION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        questions: state.questions.filter(q => q.id !== action.payload.id)
+      };
     case POST_QUESTIONS_FAILURE:
       return {
         ...state,
@@ -46,6 +54,12 @@ export const questionsReducer = (state = initialState, action) => {
         loading: false
       };
     case FETCH_QUESTIONS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false
+      };
+    case DELETE_QUESTIONS_FAILURE:
       return {
         ...state,
         error: action.payload,
