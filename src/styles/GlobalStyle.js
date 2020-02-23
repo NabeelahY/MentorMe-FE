@@ -24,7 +24,6 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-size: 62.5%;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
