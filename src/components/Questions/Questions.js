@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getQuestions, getTags } from '../../actions/questions';
 import { Tabs } from 'antd';
 import { QuestionContainer } from '../../styles/Questions';
-import { Question } from './Question';
+import Question from './Question';
 
 const { TabPane } = Tabs;
 

@@ -6,9 +6,11 @@ import { decodeToken } from '../utils/checkToken';
 export const FETCH_QUESTIONS_LOADING = 'FETCH_QUESTIONS_LOADING';
 export const FETCH_QUESTIONS_SUCCESS = 'FETCH_QUESTIONS_SUCCESS';
 export const POST_QUESTIONS_SUCCESS = 'POST_QUESTIONS_SUCCESS';
+export const DELETE_QUESTION_SUCCESS = 'DELETE_QUESTION_SUCCESS';
+export const FETCH_TAGS_SUCCESS = 'FETCH_TAGS_SUCCESS';
 export const FETCH_QUESTIONS_FAILURE = 'FETCH_QUESTIONS_FAILURE';
 export const POST_QUESTIONS_FAILURE = 'POST_QUESTIONS_FAILURE';
-export const FETCH_TAGS_SUCCESS = 'FETCH_TAGS_SUCCESS';
+export const DELETE_QUESTIONS_FAILURE = 'DELETE_QUESTIONS_FAILURE';
 
 export const getQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_LOADING });
@@ -48,6 +50,26 @@ export const postQuestions = question => dispatch => {
     .catch(err => {
       dispatch({
         type: POST_QUESTIONS_FAILURE,
+        payload: err.response?.data.message
+      });
+    });
+};
+
+export const deleteQuestion = id => dispatch => {
+  dispatch({ type: FETCH_QUESTIONS_LOADING });
+  return axios
+    .delete(`${apiURL}/api/questions/${id}`)
+    .then(res => {
+      debugger
+      dispatch({
+        type: DELETE_QUESTION_SUCCESS,
+        payload: { message: res.data, id }
+      });
+    })
+    .catch(err => {
+      console.log(err.data)
+      dispatch({
+        type: DELETE_QUESTIONS_FAILURE,
         payload: err.response?.data.message
       });
     });

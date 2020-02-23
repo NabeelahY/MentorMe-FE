@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { postQuestions } from '../../actions/questions';
-import 'antd/dist/antd.css';
 import { Modal, Form, Input, Select } from 'antd';
 
 const ModalForm = ({ setVisibility, visible, form, postQuestions, tags, loading }) => {

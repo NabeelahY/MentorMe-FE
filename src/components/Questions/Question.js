@@ -1,9 +1,15 @@
 import React from 'react';
-import 'antd/dist/antd.css';
+import { connect } from 'react-redux';
+import { deleteQuestion } from '../../actions/questions';
 import { Card, Avatar } from 'antd';
+import {
+  EditOutlined,
+  DeleteOutlined
+} from '@ant-design/icons';
+
 const { Meta } = Card;
 
-export const Question = ({ question, loading }) => {
+const Question = ({ question, loading, deleteQuestion }) => {
   return (
     <Card
       className='question-card'
@@ -11,6 +17,13 @@ export const Question = ({ question, loading }) => {
       title={question.title}
       style={{ width: 380 }}
       loading={loading}
+      actions={[
+        <DeleteOutlined
+          key='delete'
+          onClick={() => deleteQuestion(question.id)}
+        />,
+        <EditOutlined key='edit' />
+      ]}
     >
       <Meta
         avatar={<Avatar src={question.author.avatar} />}
@@ -19,3 +32,5 @@ export const Question = ({ question, loading }) => {
     </Card>
   );
 };
+
+export default connect(null, { deleteQuestion })(Question);
