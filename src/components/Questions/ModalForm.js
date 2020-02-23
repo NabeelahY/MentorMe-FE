@@ -4,7 +4,7 @@ import { postQuestions } from '../../actions/questions';
 import 'antd/dist/antd.css';
 import { Modal, Form, Input, Select } from 'antd';
 
-const ModalForm = ({ setVisibility, visible, form, postQuestions, tags }) => {
+const ModalForm = ({ setVisibility, visible, form, postQuestions, tags, loading }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,6 +27,7 @@ const ModalForm = ({ setVisibility, visible, form, postQuestions, tags }) => {
       title='Ask a Question'
       visible={visible}
       onOk={handleSubmit}
+      confirmLoading={loading}
       onCancel={() => setVisibility(false)}
     >
       <Form name='modal' onSubmit={handleSubmit}>
