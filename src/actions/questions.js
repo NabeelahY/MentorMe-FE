@@ -1,10 +1,13 @@
 import axios from 'axios';
 import { apiURL } from '../config';
+import { decodeToken } from '../utils/checkToken';
 // import { axiosWithAuth } from '../utils/axiosInstance';
 
 export const FETCH_QUESTIONS_LOADING = 'FETCH_QUESTIONS_LOADING';
 export const FETCH_QUESTIONS_SUCCESS = 'FETCH_QUESTIONS_SUCCESS';
+export const POST_QUESTIONS_SUCCESS = 'POST_QUESTIONS_SUCCESS';
 export const FETCH_QUESTIONS_FAILURE = 'FETCH_QUESTIONS_FAILURE';
+export const POST_QUESTIONS_FAILURE = 'POST_QUESTIONS_FAILURE';
 export const FETCH_TAGS_SUCCESS = 'FETCH_TAGS_SUCCESS';
 
 export const getQuestions = () => async dispatch => {
@@ -31,4 +34,21 @@ export const getTags = () => async dispatch => {
       payload: error.response?.data.message
     });
   }
+};
+
+export const postQuestions = question => dispatch => {
+  dispatch({ type: FETCH_QUESTIONS_LOADING });
+  let user = decodeToken();
+  question.author_id = user.subject;
+  return axios
+    .post(`${apiURL}/api/questions`, question)
+    .then(res => {
+      dispatch({ type: POST_QUESTIONS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: POST_QUESTIONS_FAILURE,
+        payload: err.response?.data.message
+      });
+    });
 };

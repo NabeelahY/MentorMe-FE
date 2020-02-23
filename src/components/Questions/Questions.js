@@ -42,7 +42,7 @@ const Questions = ({ getQuestions, questions, getTags, tags, loading }) => {
             <Route exact path={`/questions/${tag.id}`}>
               <QuestionContainer>
                 {filteredQuestions(tag.id).map(ques => (
-                  <Question question={ques} loading={loading} />
+                  <Question question={ques} loading={loading} key={ques.id} />
                 ))}
               </QuestionContainer>
             </Route>
