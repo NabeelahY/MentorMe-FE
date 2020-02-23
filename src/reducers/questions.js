@@ -2,7 +2,9 @@ import {
   FETCH_QUESTIONS_LOADING,
   FETCH_QUESTIONS_SUCCESS,
   FETCH_TAGS_SUCCESS,
-  FETCH_QUESTIONS_FAILURE
+  POST_QUESTIONS_SUCCESS,
+  FETCH_QUESTIONS_FAILURE,
+  POST_QUESTIONS_FAILURE
 } from '../actions/questions';
 
 const initialState = {
@@ -29,6 +31,18 @@ export const questionsReducer = (state = initialState, action) => {
       return {
         ...state,
         tags: action.payload,
+        loading: false
+      };
+    case POST_QUESTIONS_SUCCESS:
+      return {
+        ...state,
+        questions: [action.payload, ...state.questions],
+        loading: false
+      };
+    case POST_QUESTIONS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
         loading: false
       };
     case FETCH_QUESTIONS_FAILURE:
