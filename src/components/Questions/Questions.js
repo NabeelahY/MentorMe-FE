@@ -28,10 +28,10 @@ const Questions = ({ getQuestions, questions, getTags, tags, loading }) => {
   return (
     <>
       <Tabs
-        defaultActiveKey={
+        activeKey={
           location && location.state && location.state.tabKey
             ? location.state.tabKey
-            : 'questions'
+            : '2'
         }
         size='large'
         onChange={onTabChange}
