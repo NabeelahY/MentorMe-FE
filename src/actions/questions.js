@@ -5,6 +5,7 @@ import { decodeToken } from '../utils/checkToken';
 
 export const FETCH_QUESTIONS_LOADING = 'FETCH_QUESTIONS_LOADING';
 export const FETCH_QUESTIONS_SUCCESS = 'FETCH_QUESTIONS_SUCCESS';
+export const  FETCH_QUESTION_SUCCESS = 'FETCH_QUESTION_SUCCESS'
 export const POST_QUESTIONS_SUCCESS = 'POST_QUESTIONS_SUCCESS';
 export const DELETE_QUESTION_SUCCESS = 'DELETE_QUESTION_SUCCESS';
 export const FETCH_TAGS_SUCCESS = 'FETCH_TAGS_SUCCESS';
@@ -17,6 +18,20 @@ export const getQuestions = () => async dispatch => {
   try {
     let questions = await axios.get(`${apiURL}/api/questions`);
     dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: questions.data });
+  } catch (error) {
+    dispatch({
+      type: FETCH_QUESTIONS_FAILURE,
+      payload: error.response?.data.message
+    });
+  }
+};
+
+
+export const getQuestion = id => async dispatch => {
+  dispatch({ type: FETCH_QUESTIONS_LOADING });
+  try {
+    let question = await axios.get(`${apiURL}/api/questions/${id}`);
+    dispatch({ type: FETCH_QUESTION_SUCCESS, payload: question.data });
   } catch (error) {
     dispatch({
       type: FETCH_QUESTIONS_FAILURE,
