@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getQuestions, getTags } from '../../actions/questions';
 import { Tabs } from 'antd';
@@ -20,7 +19,7 @@ const Questions = ({ getQuestions, questions, getTags, tags, loading }) => {
   const filteredQuestions = tId => questions.filter(q => q.tag.id === tId);
 
   const onTabChange = path => {
-    history.push(`/questions/${path}`, {
+    history.push(`/?tag=${path}`, {
       tabKey: path
     });
   };
@@ -39,13 +38,13 @@ const Questions = ({ getQuestions, questions, getTags, tags, loading }) => {
       >
         {tags.map(tag => (
           <TabPane tab={`${tag.tag}`} key={tag.id}>
-            <Route exact path={`/questions/${tag.id}`}>
+            <Link to={`/?tag=${tag.id}`}>
               <QuestionContainer>
                 {filteredQuestions(tag.id).map(ques => (
                   <Question question={ques} loading={loading} key={ques.id} />
                 ))}
               </QuestionContainer>
-            </Route>
+            </Link>
           </TabPane>
         ))}
       </Tabs>

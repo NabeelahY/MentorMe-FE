@@ -17,10 +17,10 @@ function App() {
         <Route exact path='/register'>
           <Signup />
         </Route>
-        <Route path='/questions'>
+        <Route exact path='/'>
           <Home />
         </Route>
-        <Route path='/question/:id'>
+        <Route exact path='/questions/:id'>
           <Details />
         </Route>
       </Switch>

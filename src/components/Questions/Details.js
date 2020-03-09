@@ -3,18 +3,30 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getQuestion } from '../../actions/questions';
 import { NavBar } from '../NavBar';
+import { QuestionDetails } from '../../styles/Questions';
 
 export const Details = ({ getQuestion, question }) => {
   const { id } = useParams();
-
+  const { title, author } = question;
+  console.log(question);
   useEffect(() => {
     getQuestion(id);
   }, [getQuestion, id]);
   return (
-    <div>
-      <NavBar />
-  <div>{question.title}</div>
-    </div>
+    <>
+      {question && author && (
+        <div>
+          <NavBar />
+          <QuestionDetails>
+            <img src={author.avatar} alt='Author avatar' />
+            <div>{title}</div>
+            <div>
+              <p></p>
+            </div>
+          </QuestionDetails>
+        </div>
+      )}
+    </>
   );
 };
 

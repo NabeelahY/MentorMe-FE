@@ -3,8 +3,14 @@ import { connect } from 'react-redux';
 import { postQuestions } from '../../actions/questions';
 import { Modal, Form, Input, Select } from 'antd';
 
-const ModalForm = ({ setVisibility, visible, form, postQuestions, tags, loading }) => {
-
+const ModalForm = ({
+  setVisibility,
+  visible,
+  form,
+  postQuestions,
+  tags,
+  loading
+}) => {
   const handleSubmit = e => {
     e.preventDefault();
     form

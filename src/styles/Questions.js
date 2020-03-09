@@ -6,8 +6,23 @@ export const QuestionContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
- 
+
   .question-card {
-    margin: 10px
+    margin: 10px;
+  }
+`;
+
+export const QuestionDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+
+  img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
   }
 `;

@@ -75,7 +75,6 @@ export const deleteQuestion = id => dispatch => {
   return axios
     .delete(`${apiURL}/api/questions/${id}`)
     .then(res => {
-      debugger
       dispatch({
         type: DELETE_QUESTION_SUCCESS,
         payload: { message: res.data, id }
