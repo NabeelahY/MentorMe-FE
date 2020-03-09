@@ -18,7 +18,7 @@ const initialState = {
   loading: false
 };
 
-export const questionsReducer = (state = initialState, action) => {
+const questionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_QUESTIONS_LOADING:
       return {
@@ -77,3 +77,5 @@ export const questionsReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default questionsReducer;
