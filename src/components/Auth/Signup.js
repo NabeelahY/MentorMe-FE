@@ -12,7 +12,7 @@ const SignUp = props => {
     props.form.validateFields((err, values) => {
       if (!err) {
         props.signUp(values).then(res => {
-          history.push('/questions');
+          history.push('/');
         });
       }
     });
