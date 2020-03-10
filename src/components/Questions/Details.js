@@ -10,7 +10,6 @@ import moment from 'moment';
 export const Details = ({ getQuestion, c_question }) => {
   const { id } = useParams();
   const { title, author, question, tag, isAnswered, created_at } = c_question;
-  console.log(question);
   useEffect(() => {
     getQuestion(id);
   }, [getQuestion, id]);
@@ -41,7 +40,7 @@ export const Details = ({ getQuestion, c_question }) => {
               </div>
             </div>
             <div className='links'>
-              <Link to='/'>Have an Answer?</Link>
+              <Link to={`/convo/${id}`}>Have an Answer?</Link>
               <Link to='/'>Back to home page</Link>
             </div>
           </QuestionDetails>

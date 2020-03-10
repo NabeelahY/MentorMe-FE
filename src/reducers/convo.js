@@ -5,7 +5,7 @@ import {
 } from '../actions/convo';
 
 const initialState = {
-  convo: {},
+  convo: [],
   error: '',
   loading: false
 };

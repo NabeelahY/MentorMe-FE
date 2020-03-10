@@ -5,6 +5,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import { Home } from './components/Questions';
 import Details from './components/Questions/Details';
+import QuestionConvo from './components/Convo/QuestionConvo';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route exact path='/questions/:id'>
           <Details />
+        </Route>
+        <Route exact path='/convo/:id'>
+          <QuestionConvo />
         </Route>
       </Switch>
     </Router>
