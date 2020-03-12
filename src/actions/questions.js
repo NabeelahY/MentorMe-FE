@@ -55,7 +55,7 @@ export const getTags = () => async dispatch => {
 
 export const postQuestions = question => dispatch => {
   dispatch({ type: FETCH_QUESTIONS_LOADING });
-  let user = decodeToken();
+  let user = decodeToken();  
   question.author_id = user.subject;
   return axios
     .post(`${apiURL}/api/questions`, question)
