@@ -65,6 +65,7 @@ const Login = props => {
   );
 };
 const WrappedNormalLoginForm = Form.create({ name: 'login' })(Login);
+
 const mapStateToProps = ({ authReducer }) => ({
   loading: authReducer.loading,
   error: authReducer.error
