@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { apiURL } from '../config';
 import { axiosWithAuth } from '../utils/axiosInstance';
 
@@ -6,6 +6,7 @@ export const FETCH_CONVO_LOADING = 'FETCH_CONVO_LOADING';
 export const FETCH_CONVO_SUCCESS = 'FETCH_CONVO_SUCCESS';
 export const FETCH_MSG_SUCCESS = 'FETCH_MSG_SUCCESS';
 export const FETCH_CONVO_FAILURE = 'FETCH_CONVO_FAILURE';
+export const RESET_CONVO = 'RESET_CONVO';
 
 export const getQuesConvo = id => async dispatch => {
   dispatch({ type: FETCH_CONVO_LOADING });
@@ -33,4 +34,8 @@ export const getConvo = id => async dispatch => {
       payload: error.response?.data.message
     });
   }
+};
+
+export const resetConvo = () => async dispatch => {
+  dispatch({ type: RESET_CONVO });
 };

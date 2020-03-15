@@ -4,6 +4,7 @@ import {
   FETCH_QUESTION_SUCCESS,
   FETCH_TAGS_SUCCESS,
   POST_QUESTIONS_SUCCESS,
+  RESET_QUESTION,
   FETCH_QUESTIONS_FAILURE,
   POST_QUESTIONS_FAILURE,
   DELETE_QUESTION_SUCCESS,
@@ -61,6 +62,8 @@ const questionsReducer = (state = initialState, action) => {
         error: action.payload,
         loading: false
       };
+    case RESET_QUESTION:
+      return initialState;
     case FETCH_QUESTIONS_FAILURE:
       return {
         ...state,

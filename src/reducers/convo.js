@@ -2,6 +2,7 @@ import {
   FETCH_CONVO_LOADING,
   FETCH_CONVO_SUCCESS,
   FETCH_MSG_SUCCESS,
+  RESET_CONVO,
   FETCH_CONVO_FAILURE
 } from '../actions/convo';
 
@@ -31,6 +32,8 @@ const convoReducer = (state = initialState, action) => {
         loading: false,
         msgs: action.payload
       };
+    case RESET_CONVO:
+      return initialState;
     case FETCH_CONVO_FAILURE:
       return {
         ...state,
