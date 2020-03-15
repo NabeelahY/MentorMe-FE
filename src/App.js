@@ -6,6 +6,7 @@ import Signup from './components/Auth/Signup';
 import { Home } from './components/Questions';
 import Details from './components/Questions/Details';
 import QuestionConvo from './components/Convo/QuestionConvo';
+import ProtectedRoutes from './utils/ProtectedRoutes';
 
 function App() {
   return (
@@ -18,15 +19,15 @@ function App() {
         <Route exact path='/register'>
           <Signup />
         </Route>
-        <Route exact path='/'>
+        <ProtectedRoutes exact path='/'>
           <Home />
-        </Route>
-        <Route exact path='/questions/:id'>
+        </ProtectedRoutes>
+        <ProtectedRoutes exact path='/questions/:id'>
           <Details />
-        </Route>
-        <Route exact path='/convo/:id'>
+        </ProtectedRoutes>
+        <ProtectedRoutes exact path='/convo/:id'>
           <QuestionConvo />
-        </Route>
+        </ProtectedRoutes>
       </Switch>
     </Router>
   );
