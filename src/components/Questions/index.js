@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { NavBar } from '../NavBar';
+import NavBar from '../NavBar';
 import Questions from './Questions';
-import  ModalForm from './ModalForm';
+import ModalForm from './ModalForm';
 
 export const Home = () => {
   const [visible, setVisibility] = useState(false);

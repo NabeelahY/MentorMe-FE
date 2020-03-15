@@ -1,11 +1,26 @@
 import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { NavStyle } from '../styles/NavBar';
+import { clearLocalStorage } from '../utils/localStorage';
 
-export const NavBar = ({ displayModal }) => {
-  
+const NavBar = ({ displayModal }) => {
+
+  const { pathname } = useLocation();
+
   return (
     <NavStyle>
-      <button onClick={displayModal}>Ask a question</button>
+      <Link to='/' className='logo'>
+        Mentor Me
+      </Link>
+      {pathname === '/' && (
+        <button onClick={displayModal}>Ask a question</button>
+      )}
+      <div className='user'>
+        <Link to='/dashboard'>Dashboard</Link>
+        <div onClick={clearLocalStorage}>Log out</div>
+      </div>
     </NavStyle>
   );
 };
+
+export default NavBar;

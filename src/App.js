@@ -7,6 +7,7 @@ import { Home } from './components/Questions';
 import Details from './components/Questions/Details';
 import QuestionConvo from './components/Convo/QuestionConvo';
 import ProtectedRoutes from './utils/ProtectedRoutes';
+import Dashboard from './components/User/Dashboard';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </ProtectedRoutes>
         <ProtectedRoutes exact path='/convo/:id'>
           <QuestionConvo />
+        </ProtectedRoutes>
+        <ProtectedRoutes exact path='/dashboard'>
+          <Dashboard />
         </ProtectedRoutes>
       </Switch>
     </Router>

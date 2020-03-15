@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getQuestion, resetQuestion } from '../../actions/questions';
-import { NavBar } from '../NavBar';
+import NavBar from '../NavBar';
 import { QuestionDetails } from '../../styles/Questions';
 import { Tag } from 'antd';
 import moment from 'moment';
