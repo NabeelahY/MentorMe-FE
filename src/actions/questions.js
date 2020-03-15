@@ -85,7 +85,6 @@ export const deleteQuestion = id => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err.data);
       dispatch({
         type: DELETE_QUESTIONS_FAILURE,
         payload: err.response?.data.message

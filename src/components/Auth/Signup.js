@@ -80,6 +80,7 @@ const SignUp = props => {
   );
 };
 const WrappedNormalSignUpForm = Form.create({ name: 'signup' })(SignUp);
+
 const mapStateToProps = ({ authReducer }) => ({
   loading: authReducer.loading,
   error: authReducer.error
