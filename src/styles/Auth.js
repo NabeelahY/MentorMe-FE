@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginStyles = styled.div`
+export const AuthStyles = styled.div`
   width: 500px;
   margin: 0 auto;
   display: flex;
@@ -10,14 +10,14 @@ export const LoginStyles = styled.div`
   text-align: center;
   min-height: 100vh;
   h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 10px 0;
     color: #d3d3d3;
   }
   form {
     width: 300px;
     button {
-      font-size: 2rem;
+      font-size: 1rem;
       width: 100%;
     }
   }

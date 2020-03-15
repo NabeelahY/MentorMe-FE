@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signUp } from '../../actions/auth';
 import { Form, Input, Button, Icon } from 'antd';
-import { LoginStyles } from '../../styles/Login';
+import { AuthStyles } from '../../styles/Auth';
 
 const SignUp = props => {
   let history = useHistory();
@@ -21,7 +21,7 @@ const SignUp = props => {
   const { getFieldDecorator } = props.form;
 
   return (
-    <LoginStyles>
+    <AuthStyles>
       <h1>Register</h1>
       <Form name='signup' onSubmit={handleSubmit}>
         <Form.Item>
@@ -76,7 +76,7 @@ const SignUp = props => {
           </Button>
         </Form.Item>
       </Form>
-    </LoginStyles>
+    </AuthStyles>
   );
 };
 const WrappedNormalSignUpForm = Form.create({ name: 'signup' })(SignUp);
