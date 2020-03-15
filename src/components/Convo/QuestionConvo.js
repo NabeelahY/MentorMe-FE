@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getQuesConvo, getConvo } from '../../actions/convo';
+import moment from 'moment';
+import { getQuesConvo, getConvo, resetConvo } from '../../actions/convo';
 import { decodeToken } from '../../utils/checkToken';
-import { ConvoStyles } from '../../styles/Convo';
+import { ConvoStyles, ChatStyles } from '../../styles/Convo';
 
-const QuestionConvo = ({ getQuesConvo, convos, getConvo, msgs }) => {
+const QuestionConvo = ({
+  getQuesConvo,
+  convos,
+  getConvo,
+  resetConvo,
+  msgs
+}) => {
   const { id } = useParams();
   useEffect(() => {
     getQuesConvo(id);
@@ -18,21 +25,35 @@ const QuestionConvo = ({ getQuesConvo, convos, getConvo, msgs }) => {
     c => c.mentor_id === subject && c.question_id === Number(id)
   );
 
-  console.log(msgs);
-
   useEffect(() => {
     quesConvo && getConvo(quesConvo.id);
-  }, [quesConvo, getConvo]);
 
-  const { author, messages } = msgs;
+    return () => {
+      resetConvo();
+    };
+  }, [quesConvo, getConvo, resetConvo]);
+
+  const { author, mentor, messages } = msgs;
   return (
     <>
       {author && (
         <>
-          <h1>Chat History with {author.username}</h1>
           <ConvoStyles>
-            {messages.map(msg => (
-              <p>{msg.text}</p>
+            <h1>Chat History with {author.username}</h1>
+            {messages.map((msg, idx) => (
+              <ChatStyles key={idx} sender={msg.sender === Number(subject)}>
+                <div className='txt'>
+                  <p className='name'>
+                    {msg.sender === Number(subject)
+                      ? mentor.username
+                      : author.username}
+                  </p>
+                  <p className='msg'>{msg.text}</p>
+                  <span className='timestamp'>
+                    {moment(msg.created_at, 'YYYYMMDD').fromNow()}
+                  </span>
+                </div>
+              </ChatStyles>
             ))}
           </ConvoStyles>
         </>
@@ -45,6 +66,6 @@ const mapStateToProps = ({ convoReducer }) => ({
   convos: convoReducer.convo,
   msgs: convoReducer.msgs
 });
-export default connect(mapStateToProps, { getQuesConvo, getConvo })(
+export default connect(mapStateToProps, { getQuesConvo, getConvo, resetConvo })(
   QuestionConvo
 );
