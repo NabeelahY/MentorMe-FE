@@ -5,8 +5,9 @@ import { decodeToken } from '../utils/checkToken';
 
 export const FETCH_QUESTIONS_LOADING = 'FETCH_QUESTIONS_LOADING';
 export const FETCH_QUESTIONS_SUCCESS = 'FETCH_QUESTIONS_SUCCESS';
-export const  FETCH_QUESTION_SUCCESS = 'FETCH_QUESTION_SUCCESS'
+export const FETCH_QUESTION_SUCCESS = 'FETCH_QUESTION_SUCCESS';
 export const POST_QUESTIONS_SUCCESS = 'POST_QUESTIONS_SUCCESS';
+export const RESET_QUESTION = 'RESET_QUESTION'
 export const DELETE_QUESTION_SUCCESS = 'DELETE_QUESTION_SUCCESS';
 export const FETCH_TAGS_SUCCESS = 'FETCH_TAGS_SUCCESS';
 export const FETCH_QUESTIONS_FAILURE = 'FETCH_QUESTIONS_FAILURE';
@@ -26,7 +27,6 @@ export const getQuestions = () => async dispatch => {
   }
 };
 
-
 export const getQuestion = id => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_LOADING });
   try {
@@ -38,6 +38,10 @@ export const getQuestion = id => async dispatch => {
       payload: error.response?.data.message
     });
   }
+};
+
+export const resetQuestion = () => async dispatch => {
+  dispatch({ type: RESET_QUESTION });
 };
 
 export const getTags = () => async dispatch => {

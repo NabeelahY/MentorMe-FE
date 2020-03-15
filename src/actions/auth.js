@@ -14,9 +14,11 @@ export const logIn = user => dispatch => {
     .then(res => {
       setToken(res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
+      return res
     })
     .catch(err => {
       dispatch({ type: AUTH_FAILURE, payload: err.response?.data.message });
+      return err
     });
 };
 

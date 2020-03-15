@@ -4,6 +4,7 @@ import {
   FETCH_QUESTION_SUCCESS,
   FETCH_TAGS_SUCCESS,
   POST_QUESTIONS_SUCCESS,
+  RESET_QUESTION,
   FETCH_QUESTIONS_FAILURE,
   POST_QUESTIONS_FAILURE,
   DELETE_QUESTION_SUCCESS,
@@ -18,7 +19,7 @@ const initialState = {
   loading: false
 };
 
-export const questionsReducer = (state = initialState, action) => {
+const questionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_QUESTIONS_LOADING:
       return {
@@ -61,6 +62,8 @@ export const questionsReducer = (state = initialState, action) => {
         error: action.payload,
         loading: false
       };
+    case RESET_QUESTION:
+      return initialState;
     case FETCH_QUESTIONS_FAILURE:
       return {
         ...state,
@@ -77,3 +80,5 @@ export const questionsReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default questionsReducer;

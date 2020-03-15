@@ -12,7 +12,9 @@ const Login = props => {
     props.form.validateFields((err, values) => {
       if (!err) {
         props.logIn(values).then(res => {
-          history.push('/');
+          if (res.status === 200) {
+            history.push('/');
+          }
         });
       }
     });

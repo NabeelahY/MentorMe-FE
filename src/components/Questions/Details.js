@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getQuestion } from '../../actions/questions';
+import { getQuestion, resetQuestion } from '../../actions/questions';
 import { NavBar } from '../NavBar';
 import { QuestionDetails } from '../../styles/Questions';
 import { Tag } from 'antd';
 import moment from 'moment';
 
-export const Details = ({ getQuestion, c_question }) => {
+export const Details = ({ getQuestion, c_question, resetQuestion }) => {
   const { id } = useParams();
   const { title, author, question, tag, isAnswered, created_at } = c_question;
-  console.log(question);
   useEffect(() => {
     getQuestion(id);
-  }, [getQuestion, id]);
+    return () => resetQuestion();
+  }, [getQuestion, id, resetQuestion]);
   return (
     <>
       {question && author && (
@@ -41,7 +41,7 @@ export const Details = ({ getQuestion, c_question }) => {
               </div>
             </div>
             <div className='links'>
-              <Link to='/'>Have an Answer?</Link>
+              <Link to={`/convo/${id}`}>Have an Answer?</Link>
               <Link to='/'>Back to home page</Link>
             </div>
           </QuestionDetails>
@@ -55,4 +55,6 @@ const mapStateToProps = ({ questionsReducer }) => ({
   c_question: questionsReducer.question
 });
 
-export default connect(mapStateToProps, { getQuestion })(Details);
+export default connect(mapStateToProps, { getQuestion, resetQuestion })(
+  Details
+);
