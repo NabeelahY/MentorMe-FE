@@ -19,11 +19,47 @@ export const UserContainer = styled.div`
   .main {
     display: flex;
     align-items: center;
-    img {
-      border-radius: 5px;
+    .img {
       width: 250px;
       height: 250px;
       margin: 0 20px 0 0;
+      position: relative;
+      img {
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 0.3s ease;
+        border-radius: 5px;
+        background-color: #ccc;
+        text-align: center;
+       
+        :hover {
+          opacity: 0.8;
+        }
+        i {
+          color: white;
+          font-size: 100px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          text-align: center;
+        }
+        input[type='file'] {
+          display: none;
+        }
+      }
     }
     span {
       font-weight: bold;

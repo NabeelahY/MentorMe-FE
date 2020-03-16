@@ -1,6 +1,7 @@
 import {
   FETCH_USER_LOADING,
   FETCH_USER_SUCCESS,
+  EDIT_USER_SUCCESS,
   FETCH_USER_FAILURE
 } from '../actions/user';
 
@@ -20,6 +21,13 @@ const userReducer = (state = initialState, action) => {
       };
 
     case FETCH_USER_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        loading: false,
+        user: action.payload
+      };
+    case EDIT_USER_SUCCESS:
       return {
         ...state,
         error: '',

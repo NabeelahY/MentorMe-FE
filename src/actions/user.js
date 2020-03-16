@@ -4,11 +4,14 @@ import { decodeToken } from '../utils/checkToken';
 
 export const FETCH_USER_LOADING = 'FETCH_USER_LOADING';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
 
+
+
 export const getUser = () => async dispatch => {
-  dispatch({ type: FETCH_USER_LOADING });
   let { subject } = decodeToken();
+  dispatch({ type: FETCH_USER_LOADING });
   try {
     let user = await axios.get(`${apiURL}/api/user/${subject}`);
     dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
@@ -18,4 +21,20 @@ export const getUser = () => async dispatch => {
       payload: error.response?.data.message
     });
   }
+};
+
+export const editUser = user => dispatch => {
+  let { subject } = decodeToken();
+  dispatch({ type: FETCH_USER_LOADING });
+  return axios
+    .put(`${apiURL}/api/user/${subject}`, user)
+    .then(res => {
+      dispatch({ type: EDIT_USER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: FETCH_USER_FAILURE,
+        payload: err.response?.data.message
+      });
+    });
 };
