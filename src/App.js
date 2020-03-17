@@ -8,6 +8,7 @@ import Details from './components/Questions/Details';
 import QuestionConvo from './components/Convo/QuestionConvo';
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import Dashboard from './components/User/Dashboard';
+import Chats from './components/User/Chats';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </ProtectedRoutes>
         <ProtectedRoutes exact path='/dashboard'>
           <Dashboard />
+        </ProtectedRoutes>
+        <ProtectedRoutes exact path='/chats'>
+          <Chats />
         </ProtectedRoutes>
       </Switch>
     </Router>
