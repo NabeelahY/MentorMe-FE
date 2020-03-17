@@ -42,7 +42,7 @@ export const UserContainer = styled.div`
         border-radius: 5px;
         background-color: #ccc;
         text-align: center;
-       
+
         :hover {
           opacity: 0.8;
         }
@@ -64,6 +64,33 @@ export const UserContainer = styled.div`
     span {
       font-weight: bold;
       color: #1890ff;
+    }
+  }
+`;
+
+export const UserChats = styled.div`
+  padding: 20px;
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  a {
+    display: flex;
+    img {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      margin: 10px;
+    }
+    .details {
+      margin: 5px 10px;
+      line-height: 1.5;
+
+      .name {
+        font-weight: bold;
+        color: #3498db;
+      }
     }
   }
 `;

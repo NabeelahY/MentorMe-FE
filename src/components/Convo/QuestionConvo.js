@@ -23,7 +23,7 @@ const QuestionConvo = ({
   console.log(subject);
 
   const quesConvo = convos.find(
-    c => c.mentor_id === subject || c.question_id === Number(id)
+    c => c.mentor_id === subject && c.question_id === Number(id)
   );
 
   useEffect(() => {
