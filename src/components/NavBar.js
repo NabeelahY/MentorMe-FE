@@ -4,7 +4,6 @@ import { NavStyle } from '../styles/NavBar';
 import { clearLocalStorage } from '../utils/localStorage';
 
 const NavBar = ({ displayModal }) => {
-
   const { pathname } = useLocation();
 
   return (
@@ -16,6 +15,7 @@ const NavBar = ({ displayModal }) => {
         <button onClick={displayModal}>Ask a question</button>
       )}
       <div className='user'>
+        {pathname !== '/chats' && <Link to='/chats'>Chats</Link>}
         <Link to='/dashboard'>Dashboard</Link>
         <div onClick={clearLocalStorage}>Log out</div>
       </div>

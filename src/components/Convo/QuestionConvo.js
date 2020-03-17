@@ -20,6 +20,7 @@ const QuestionConvo = ({
 
   let user = decodeToken();
   const { subject } = user;
+  console.log(subject);
 
   const quesConvo = convos.find(
     c => c.mentor_id === subject && c.question_id === Number(id)
@@ -33,18 +34,23 @@ const QuestionConvo = ({
     };
   }, [quesConvo, getConvo, resetConvo]);
 
-  const { author, mentor, messages } = msgs;
+  const { author, mentor, messages, mentor_id } = msgs;
   return (
     <>
       {author && (
         <>
           <ConvoStyles>
-            <h1>Chat History with {author.username}</h1>
+            <h1>
+              Chat History with{' '}
+              {Number(subject) !== mentor_id
+                ? mentor.username
+                : author.username}
+            </h1>
             {messages.map((msg, idx) => (
               <ChatStyles key={idx} sender={msg.sender === Number(subject)}>
                 <div className='txt'>
                   <p className='name'>
-                    {msg.sender === Number(subject)
+                    {msg.sender === mentor_id
                       ? mentor.username
                       : author.username}
                   </p>

@@ -48,7 +48,6 @@ export const ChatStyles = styled.div`
     .timestamp {
       align-self: flex-end;
       font-size: 0.5rem;
-      // text-align: right;
       text-transform: uppercase;
       color: #999;
     }
